@@ -10,7 +10,7 @@ pipeline {
   stages {
     stage('Clone Repo') {
       steps {
-        git 'https://github.com/your-username/your-repo.git'
+        git 'https://github.com/Akash-Pandiyan/CICD.git'
       }
     }
 
