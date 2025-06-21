@@ -4,7 +4,7 @@ pipeline {
   environment {
     DOCKERHUB_USER = 'akashpandiyan'
     IMAGE_NAME = 'workfront'
-    TAG = 'latest'
+    TAG = 'v1'
   }
 
   stages {
