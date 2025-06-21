@@ -27,7 +27,7 @@ pipeline {
                 docker login -u %USER% -p %PASS%
                 docker push %DOCKERHUB_USER%/%IMAGE_NAME%:%TAG%
             """
-        //withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
+          //withCredentials([usernamePassword(credentialsId: 'dockerhub-creds', usernameVariable: 'USER', passwordVariable: 'PASS')]) {
           //bat 'echo %PASS | docker login -u $USER --password-stdin'
           //bat 'docker push %DOCKERHUB_USER%/%IMAGE_NAME%:%TAG'
         }
@@ -36,7 +36,7 @@ pipeline {
 
     stage('Deploy to Kubernetes') {
       steps {
-        bat 'kubectl apply -f k8s/deployment.yaml'
+        bat 'kubectl apply -f k8s/deployment.yaml --validate=false'
         bat 'kubectl apply -f k8s/service.yaml'
         //sh 'kubectl rollout status deployment/flask-app'
       }
