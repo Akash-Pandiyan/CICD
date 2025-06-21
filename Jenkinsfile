@@ -36,9 +36,12 @@ pipeline {
 
     stage('Deploy to Kubernetes') {
       steps {
-        bat 'kubectl apply -f k8s/deployment.yaml --validate=false'
-        bat 'kubectl apply -f k8s/service.yaml'
-        //sh 'kubectl rollout status deployment/flask-app'
+        bat '''
+            set KUBECONFIG=C:\\ProgramData\\Jenkins\\.kube\\config
+            kubectl apply -f k8s\\deployment.yaml --validate=false
+            kubectl apply -f k8s\\service.yaml --validate=false
+            kubectl rollout status deployment/workfront
+        '''
       }
     }
   }
