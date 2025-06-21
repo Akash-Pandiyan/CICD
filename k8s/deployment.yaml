@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: workfront
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: workfront
+  template:
+    metadata:
+      labels:
+        app: workfront
+    spec:
+      containers:
+      - name: workfront
+        image: akashpandiyan/workfront:latest
+        ports:
+        - containerPort: 5000
